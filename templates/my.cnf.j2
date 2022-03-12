@@ -36,6 +36,8 @@ slow_query_log_file = {{ mysql_slow_query_log_file }}
 long_query_time = {{ mysql_slow_query_time }}
 {% endif %}
 
+binlog_expire_logs_seconds = {{ mysql_expire_logs_seconds }}
+
 {% if mysql_replication_master %}
 # Replication
 server-id = {{ mysql_server_id }}
@@ -43,7 +45,6 @@ server-id = {{ mysql_server_id }}
 {% if mysql_replication_role == 'master' %}
 log_bin = mysql-bin
 log-bin-index = mysql-bin.index
-binlog_expire_logs_seconds = {{ mysql_expire_logs_seconds }}
 max_binlog_size = {{ mysql_max_binlog_size }}
 binlog_format = {{mysql_binlog_format}}
 
